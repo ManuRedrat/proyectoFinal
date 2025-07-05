@@ -1,13 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.proyectofinal;
 
-/**
- *
- * @author gonza
- */
 // Clase para representar los movimientos de los expedientes
 // Los estudiantes pueden ver cómo se registra el seguimiento
 public class Movimiento {
