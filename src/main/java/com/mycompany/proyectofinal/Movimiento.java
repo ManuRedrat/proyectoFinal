@@ -1,7 +1,6 @@
 package com.mycompany.proyectofinal;
 
 // Clase para representar los movimientos de los expedientes
-// Los estudiantes pueden ver cómo se registra el seguimiento
 public class Movimiento {
 
     private String expedienteId;
@@ -10,7 +9,6 @@ public class Movimiento {
     private String fechaHora;
     private String observaciones;
 
-    // Constructor
     public Movimiento(String expedienteId, String dependenciaOrigen,
             String dependenciaDestino, String fechaHora, String observaciones) {
         this.expedienteId = expedienteId;
@@ -20,7 +18,6 @@ public class Movimiento {
         this.observaciones = observaciones;
     }
 
-    // Métodos getter
     public String getExpedienteId() {
         return expedienteId;
     }
@@ -41,7 +38,6 @@ public class Movimiento {
         return observaciones;
     }
 
-    // Método para mostrar la información del movimiento
     public String toString() {
         return "Expediente: " + expedienteId
                 + "\nDe: " + dependenciaOrigen
