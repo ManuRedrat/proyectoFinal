@@ -1,25 +1,22 @@
 package com.mycompany.proyectofinal;
 
-// Clase de ejemplo para mostrar cómo usar el sistema
-// Los estudiantes pueden ver cómo se usan las estructuras de datos
+//Clase de ejemplo para mostrar cómo usar el sistema
 public class EjemploPrueba {
     public static void main(String[] args) {
         System.out.println("=== EJEMPLO DE USO DEL SISTEMA DE TRÁMITES ===\n");
         
-        // Crear el sistema
+        //Crear el sistema
         SistemaTramites sistema = new SistemaTramites();
         
-        // Ejemplo 1: Registrar expedientes
+        //Ejemplo 1: Registrar expedientes
         System.out.println("1. REGISTRANDO EXPEDIENTES:");
         System.out.println("----------------------------");
         
-        // Crear interesados
         Interesado interesado1 = new Interesado("12345678", "Juan", "Pérez", 
                                                "999888777", "juan.perez@email.com", true);
         Interesado interesado2 = new Interesado("87654321", "María", "García", 
                                                "888777666", "maria.garcia@email.com", false);
-        
-        // Registrar expedientes
+                                                                     
         String id1 = sistema.registrarExpediente(1, interesado1, 
                                                 "Solicitud de constancia de estudios", "DOC001");
         String id2 = sistema.registrarExpediente(2, interesado2, 
@@ -29,7 +26,7 @@ public class EjemploPrueba {
         System.out.println("Expediente registrado: " + id2);
         System.out.println();
         
-        // Ejemplo 2: Mover expedientes entre dependencias
+        //Ejemplo 2: Mover expedientes entre dependencias
         System.out.println("2. MOVIENDO EXPEDIENTES:");
         System.out.println("-------------------------");
         
@@ -56,7 +53,7 @@ public class EjemploPrueba {
         String pendientes = sistema.obtenerExpedientesPendientes();
         System.out.println(pendientes);
         
-        // Ejemplo 5: Finalizar un expediente
+        //Ejemplo 5: Finalizar un expediente
         System.out.println("5. FINALIZANDO EXPEDIENTE:");
         System.out.println("---------------------------");
         
@@ -64,7 +61,7 @@ public class EjemploPrueba {
         System.out.println("Expediente " + id1 + " finalizado");
         System.out.println();
         
-        // Ejemplo 6: Ver estadísticas
+        //Ejemplo 6: Ver estadísticas
         System.out.println("6. ESTADÍSTICAS DEL SISTEMA:");
         System.out.println("-----------------------------");
         
@@ -73,6 +70,5 @@ public class EjemploPrueba {
         System.out.println();
         
         System.out.println("=== FIN DEL EJEMPLO ===");
-        System.out.println("\nPara usar la interfaz gráfica, ejecuta: java SistemaTramites");
     }
 } 
