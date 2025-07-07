@@ -1,7 +1,6 @@
 package com.mycompany.proyectofinal;
 
-// Clase principal del sistema de gestión de trámites
-// Los estudiantes pueden ver cómo se integran todas las estructuras de datos
+//Clase principal del sistema de gestión de trámites
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -9,16 +8,15 @@ import java.util.*;
 
 public class SistemaTramites {
 
-    // Estructuras de datos principales
+    //Estructuras de datos principales
     private Lista expedientes;
     private Lista dependencias;
     private Cola expedientesPendientes;
     private Pila historialGeneral;
 
-    // Contador para generar IDs únicos
+    //Contador para generar IDs únicos
     private int contadorExpedientes;
 
-    // Constructor
     public SistemaTramites() {
         expedientes = new Lista();
         dependencias = new Lista();
@@ -26,11 +24,11 @@ public class SistemaTramites {
         historialGeneral = new Pila();
         contadorExpedientes = 1;
 
-        // Agregar algunas dependencias de ejemplo
+        //Agregar algunas dependencias de ejemplo
         inicializarDependencias();
     }
 
-    // Método para inicializar dependencias de ejemplo
+    //Método para inicializar dependencias de ejemplo
     private void inicializarDependencias() {
         dependencias.agregar(new Dependencia("DEP001", "Recepción", "Punto de entrada de trámites", "Ana García"));
         dependencias.agregar(new Dependencia("DEP002", "Secretaría Académica", "Gestión académica", "Carlos López"));
@@ -39,31 +37,25 @@ public class SistemaTramites {
         dependencias.agregar(new Dependencia("DEP005", "Decanato", "Decanato de la facultad", "Dr. Roberto Silva"));
     }
 
-    // Método para registrar un nuevo expediente
+    //Método para registrar un nuevo expediente
     public String registrarExpediente(int prioridad, Interesado interesado,
             String asunto, String documentoReferencia) {
-        // Generar ID único
         String id = "EXP" + String.format("%04d", contadorExpedientes++);
 
-        // Crear el expediente
         Expediente expediente = new Expediente(id, prioridad, interesado, asunto, documentoReferencia);
 
-        // Agregar a la lista de expedientes
         expedientes.agregar(expediente);
 
-        // Agregar a la cola de pendientes
         expedientesPendientes.encolar(expediente);
 
-        // Registrar en el historial general
         String movimiento = "Nuevo expediente registrado: " + id + " - " + asunto;
         historialGeneral.push(movimiento);
 
         return id;
     }
 
-    // Método para mover un expediente entre dependencias
+    //Método para mover un expediente entre dependencias
     public boolean moverExpediente(String expedienteId, String dependenciaDestino, String observaciones) {
-        // Buscar el expediente
         Expediente expediente = buscarExpediente(expedienteId);
         if (expediente == null) {
             return false;
@@ -75,16 +67,14 @@ public class SistemaTramites {
         Movimiento movimiento = new Movimiento(expedienteId, dependenciaOrigen,
                 dependenciaDestino, fechaHora, observaciones);
 
-        // Actualizar el expediente
         expediente.setDependenciaActual(dependenciaDestino);
         expediente.agregarMovimiento(movimiento);
 
-        // Cambiar estado a "En Proceso" si no está finalizado
         if (!expediente.getEstado().equals("Finalizado")) {
             expediente.setEstado("En Proceso");
         }
 
-        // Registrar en el historial general
+        //Registrar en el historial general
         String registro = "Movimiento: " + expedienteId + " de " + dependenciaOrigen
                 + " a " + dependenciaDestino;
         historialGeneral.push(registro);
@@ -92,7 +82,7 @@ public class SistemaTramites {
         return true;
     }
 
-    // Método para finalizar un expediente
+    //Método para finalizar un expediente
     public boolean finalizarExpediente(String expedienteId) {
         Expediente expediente = buscarExpediente(expedienteId);
         if (expediente == null) {
@@ -101,14 +91,14 @@ public class SistemaTramites {
 
         expediente.finalizar();
 
-        // Registrar en el historial general
+        //Registrar en el historial general
         String registro = "Expediente finalizado: " + expedienteId;
         historialGeneral.push(registro);
 
         return true;
     }
 
-    // Método para buscar un expediente por ID
+    //Método para buscar un expediente por ID
     public Expediente buscarExpediente(String expedienteId) {
         for (int i = 0; i < expedientes.getTamanio(); i++) {
             Expediente exp = (Expediente) expedientes.buscar(i);
@@ -119,7 +109,7 @@ public class SistemaTramites {
         return null;
     }
 
-    // Método para obtener expedientes pendientes
+    //Método para obtener expedientes pendientes
     public String obtenerExpedientesPendientes() {
         if (expedientesPendientes.isEmpty()) {
             return "No hay expedientes pendientes.";
@@ -128,7 +118,7 @@ public class SistemaTramites {
         StringBuilder resultado = new StringBuilder();
         resultado.append("EXPEDIENTES PENDIENTES:\n\n");
 
-        // Crear una cola temporal para no perder los datos
+        //Crear una cola temporal para no perder los datos
         Cola temp = new Cola();
         int contador = 1;
 
@@ -140,7 +130,7 @@ public class SistemaTramites {
             temp.encolar(exp);
         }
 
-        // Restaurar la cola original
+        //Restaurar la cola original
         while (!temp.isEmpty()) {
             expedientesPendientes.encolar(temp.desencolar());
         }
@@ -148,7 +138,7 @@ public class SistemaTramites {
         return resultado.toString();
     }
 
-    // Método para obtener el estado de un trámite
+    //Método para obtener el estado de un trámite
     public String obtenerEstadoTramite(String expedienteId) {
         Expediente expediente = buscarExpediente(expedienteId);
         if (expediente == null) {
@@ -183,7 +173,7 @@ public class SistemaTramites {
         return resultado.toString();
     }
 
-    // Método para obtener todas las dependencias
+    //Método para obtener todas las dependencias
     public String obtenerDependencias() {
         StringBuilder resultado = new StringBuilder();
         resultado.append("DEPENDENCIAS REGISTRADAS:\n\n");
@@ -196,17 +186,17 @@ public class SistemaTramites {
         return resultado.toString();
     }
 
-    // Método para agregar una nueva dependencia
+    //Método para agregar una nueva dependencia
     public void agregarDependencia(String codigo, String nombre, String descripcion, String responsable) {
         Dependencia nuevaDep = new Dependencia(codigo, nombre, descripcion, responsable);
         dependencias.agregar(nuevaDep);
 
-        // Registrar en el historial general
+        //Registrar en el historial general
         String registro = "Nueva dependencia agregada: " + nombre;
         historialGeneral.push(registro);
     }
 
-    // Método para obtener estadísticas básicas
+    //Método para obtener estadísticas básicas
     public String obtenerEstadisticas() {
         int totalExpedientes = expedientes.getTamanio();
         int expedientesPendientes = 0;
@@ -237,30 +227,30 @@ public class SistemaTramites {
                 + "Total de movimientos: " + historialGeneral.getTamanio();
     }
 
-    // Método principal para iniciar la aplicación
+    //Método principal para iniciar la aplicación
     public static void main(String[] args) {
         SistemaTramites sistema = new SistemaTramites();
         sistema.mostrarInterfaz();
     }
 
-    // Método para mostrar la interfaz gráfica
+    //Método para mostrar la interfaz gráfica
     public void mostrarInterfaz() {
         JFrame frame = new JFrame("Sistema de Gestión de Trámites - ULima");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 600);
         frame.setLocationRelativeTo(null);
 
-        // Panel principal
+        //Panel principal
         JPanel mainPanel = new JPanel(new BorderLayout());
 
-        // Panel de título
+        //Panel de título
         JPanel titlePanel = new JPanel();
         JLabel titleLabel = new JLabel("SISTEMA DE GESTIÓN DE TRÁMITES DOCUMENTARIOS");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
         titlePanel.add(titleLabel);
         mainPanel.add(titlePanel, BorderLayout.NORTH);
 
-        // Panel de botones
+        //Panel de botones
         JPanel buttonPanel = new JPanel(new GridLayout(3, 2, 10, 10));
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
@@ -280,14 +270,14 @@ public class SistemaTramites {
 
         mainPanel.add(buttonPanel, BorderLayout.CENTER);
 
-        // Área de texto para mostrar resultados
+        //Área de texto para mostrar resultados
         JTextArea textArea = new JTextArea();
         textArea.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(textArea);
         scrollPane.setPreferredSize(new Dimension(600, 300));
         mainPanel.add(scrollPane, BorderLayout.SOUTH);
 
-        // Eventos de los botones
+        //Eventos de los botones
         btnRegistrar.addActionListener(e -> mostrarDialogoRegistro(textArea));
         btnMover.addActionListener(e -> mostrarDialogoMovimiento(textArea));
         btnFinalizar.addActionListener(e -> mostrarDialogoFinalizar(textArea));
@@ -299,7 +289,7 @@ public class SistemaTramites {
         frame.setVisible(true);
     }
 
-    // Métodos para mostrar diálogos (simplificados para estudiantes)
+    //Métodos para mostrar diálogos
     private void mostrarDialogoRegistro(JTextArea textArea) {
         JDialog dialog = new JDialog();
         dialog.setTitle("Registrar Nuevo Expediente");
@@ -310,7 +300,7 @@ public class SistemaTramites {
         JPanel panel = new JPanel(new GridLayout(0, 2, 5, 5));
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        // Campos del formulario
+        //Campos del formulario
         JTextField txtDni = new JTextField();
         JTextField txtNombres = new JTextField();
         JTextField txtApellidos = new JTextField();
