@@ -8,7 +8,6 @@ public class Dependencia {
     private String descripcion;
     private String responsable;
 
-    // Constructor
     public Dependencia(String codigo, String nombre, String descripcion, String responsable) {
         this.codigo = codigo;
         this.nombre = nombre;
