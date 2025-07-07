@@ -1,17 +1,16 @@
 package com.mycompany.proyectofinal;
 
 // Clase principal para representar los expedientes
-// Los estudiantes pueden ver cómo se organizan todos los datos
 public class Expediente {
 
     private String id;
-    private int prioridad; // 1 = Alta, 2 = Media, 3 = Baja
+    private int prioridad; //1 = Alta, 2 = Media, 3 = Baja
     private Interesado interesado;
     private String asunto;
     private String documentoReferencia;
     private String fechaInicio;
     private String fechaFin;
-    private String estado; // "Pendiente", "En Proceso", "Finalizado"
+    private String estado; //"Pendiente", "En Proceso", "Finalizado"
     private String dependenciaActual;
     private Pila historialMovimientos;
 
@@ -30,13 +29,12 @@ public class Expediente {
         this.historialMovimientos = new Pila();
     }
 
-    // Método para obtener fecha y hora actual (simplificado)
     private String obtenerFechaHoraActual() {
         java.util.Date fecha = new java.util.Date();
         return fecha.toString();
     }
 
-    // Métodos getter
+    //Métodos getter
     public String getId() {
         return id;
     }
@@ -94,18 +92,18 @@ public class Expediente {
         this.fechaFin = fechaFin;
     }
 
-    // Método para agregar un movimiento al historial
+    //Método para agregar un movimiento al historial
     public void agregarMovimiento(Movimiento movimiento) {
         historialMovimientos.push(movimiento);
     }
 
-    // Método para finalizar el expediente
+    //Método para finalizar el expediente
     public void finalizar() {
         this.estado = "Finalizado";
         this.fechaFin = obtenerFechaHoraActual();
     }
 
-    // Método para mostrar la información del expediente
+    //Método para mostrar la información del expediente
     public String toString() {
         String prioridadTexto = "";
         switch (prioridad) {
