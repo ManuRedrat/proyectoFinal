@@ -1,7 +1,6 @@
 package com.mycompany.proyectofinal;
 
 // Clase para representar las dependencias de la universidad
-// Los estudiantes pueden ver cómo se organizan los datos
 public class Dependencia {
 
     private String codigo;
@@ -17,7 +16,6 @@ public class Dependencia {
         this.responsable = responsable;
     }
 
-    // Métodos getter
     public String getCodigo() {
         return codigo;
     }
@@ -34,7 +32,6 @@ public class Dependencia {
         return responsable;
     }
 
-    // Métodos setter
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
@@ -43,7 +40,6 @@ public class Dependencia {
         this.responsable = responsable;
     }
 
-    // Método para mostrar la información de la dependencia
     public String toString() {
         return "Código: " + codigo
                 + "\nNombre: " + nombre
@@ -51,7 +47,7 @@ public class Dependencia {
                 + "\nResponsable: " + responsable;
     }
 
-    // Método para comparar dependencias por código
+    //Método para comparar dependencias por código
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
