@@ -1,7 +1,6 @@
 package com.mycompany.proyectofinal;
 
 // Clase para representar a los interesados en los trámites
-// Los estudiantes pueden ver cómo se organizan los datos
 public class Interesado {
 
     private String dni;
@@ -11,7 +10,6 @@ public class Interesado {
     private String email;
     private boolean esTrabajadorULima;
 
-    // Constructor
     public Interesado(String dni, String nombres, String apellidos,
             String telefono, String email, boolean esTrabajadorULima) {
         this.dni = dni;
@@ -22,7 +20,6 @@ public class Interesado {
         this.esTrabajadorULima = esTrabajadorULima;
     }
 
-    // Métodos getter (para obtener los valores)
     public String getDni() {
         return dni;
     }
@@ -47,7 +44,6 @@ public class Interesado {
         return esTrabajadorULima;
     }
 
-    // Métodos setter (para cambiar los valores)
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
