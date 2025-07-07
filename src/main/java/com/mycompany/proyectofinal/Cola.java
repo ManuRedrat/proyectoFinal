@@ -45,7 +45,6 @@ public class Cola {
         return item;
     }
 
-    //Método para mostrar los elementos de la cola
     public void printCola() {
         if (isEmpty()) {
             System.out.println("Cola vacia");
@@ -60,7 +59,7 @@ public class Cola {
         System.out.println("");
     }
 
-    //Método para ver el frente sin borrarlo
+    //Método  para ver el frente sin borrarlo
     public Object verFrente() {
         if (isEmpty()) {
             System.out.println("Cola vacia");
