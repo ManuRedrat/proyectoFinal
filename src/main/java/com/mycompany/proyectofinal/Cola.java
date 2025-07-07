@@ -1,6 +1,6 @@
 package com.mycompany.proyectofinal;
 
-// Implementación de Cola usando arrays como pide el profesor
+//Implementación de Cola usando arrays
 public class Cola {
 
     private static final int MAX_SIZE = 100;
@@ -45,7 +45,7 @@ public class Cola {
         return item;
     }
 
-    // Método para mostrar todos los elementos de la cola
+    //Método para mostrar los elementos de la cola
     public void printCola() {
         if (isEmpty()) {
             System.out.println("Cola vacia");
@@ -60,7 +60,7 @@ public class Cola {
         System.out.println("");
     }
 
-    // Método para ver el frente sin quitarlo
+    //Método para ver el frente sin borrarlo
     public Object verFrente() {
         if (isEmpty()) {
             System.out.println("Cola vacia");
@@ -69,7 +69,7 @@ public class Cola {
         return data[ini];
     }
 
-    // Método para obtener el tamaño de la cola
+    //Método para obtener el tamaño de la cola
     public int getTamanio() {
         return cantidad;
     }
