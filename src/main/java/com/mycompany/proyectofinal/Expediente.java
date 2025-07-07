@@ -14,7 +14,6 @@ public class Expediente {
     private String dependenciaActual;
     private Pila historialMovimientos;
 
-    // Constructor
     public Expediente(String id, int prioridad, Interesado interesado,
             String asunto, String documentoReferencia) {
         this.id = id;
@@ -34,7 +33,6 @@ public class Expediente {
         return fecha.toString();
     }
 
-    //Métodos getter
     public String getId() {
         return id;
     }
@@ -75,7 +73,6 @@ public class Expediente {
         return historialMovimientos;
     }
 
-    // Métodos setter
     public void setPrioridad(int prioridad) {
         this.prioridad = prioridad;
     }
@@ -128,7 +125,7 @@ public class Expediente {
                 + "\n\nDATOS DEL INTERESADO:\n" + interesado.toString();
     }
 
-    // Método para obtener información resumida
+    //Método para obtener información resumida
     public String getResumen() {
         String prioridadTexto = "";
         switch (prioridad) {
